@@ -24,15 +24,15 @@ export class GamesService {
     return this.http.get(`${this.BASE_URL}/genres`);
   }
 
-  getPlataformas(): Observable<any> {
+  getPlatForms(): Observable<any> {
     return this.http.get(`${this.BASE_URL}/platforms`);
   }
 
-  SearchGame(name: string, genre: string, plataform: string): Observable<any> {
+  SearchGame(name: string, genre: string, platform: string): Observable<any> {
     let url = `${this.BASE_URL}/games?`;
     if (name) url += `&search=${name}`;
     if (genre) url += `&category=${genre}`;
-    if (plataform) url += `&platform=${plataform}`;
+    if (platform) url += `&platform=${platform}`;
     return this.http.get(url);
   }
 
