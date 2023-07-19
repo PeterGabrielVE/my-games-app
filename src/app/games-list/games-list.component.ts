@@ -8,11 +8,10 @@ import { Game } from '../game';
   styleUrls: ['./games-list.component.css']
 })
 export class GamesListComponent implements OnInit {
-  SearchGame($event: any) {
-    throw new Error('Method not implemented.');
-  }
 
   games: Game[];
+
+  SearchGame: string = '';
 
   constructor(private gamesService: GamesService) {
     this.games = [];
@@ -24,5 +23,14 @@ export class GamesListComponent implements OnInit {
         this.games = data;
       }
     );
+
+  }
+
+
+  onSearch() {
+    const filteredGames = this.games.filter(game =>
+      game.title.toUpperCase().includes(this.SearchGame.toUpperCase()) // Llama toUpperCase() en la variable game.name
+    );
+    // Resto del código del método
   }
 }
