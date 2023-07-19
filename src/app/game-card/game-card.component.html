@@ -1,1 +1,8 @@
-<p>game-card works!</p>
+<div class="card">
+  <img [src]="game.thumbnail" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ game.title }}</h5>
+    <p class="card-text">{{ game.short_description }}</p>
+    <a [routerLink]="['/juego', game.id]" class="btn btn-primary">Ver detalles</a>
+  </div>
+</div>

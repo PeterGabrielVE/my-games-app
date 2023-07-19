@@ -1,1 +1,9 @@
-<p>games-list works!</p>
+<div class="container">
+  <h1>Juegos</h1>
+  <app-games-filter (buscar)="SearchGame($event)"></app-games-filter>
+  <div class="row">
+    <div class="col-md-3" *ngFor="let game of games">
+      <app-game-card [game]="game"></app-game-card>
+    </div>
+  </div>
+</div>

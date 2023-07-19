@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+
 import { GamesListComponent } from './games-list/games-list.component';
 import { GamesFilterComponent } from './games-filter/games-filter.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
@@ -20,7 +22,8 @@ import { GameCardComponent } from './game-card/game-card.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

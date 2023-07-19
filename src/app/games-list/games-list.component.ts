@@ -8,6 +8,9 @@ import { Game } from '../game';
   styleUrls: ['./games-list.component.css']
 })
 export class GamesListComponent implements OnInit {
+  SearchGame($event: any) {
+    throw new Error('Method not implemented.');
+  }
 
   games: Game[];
 

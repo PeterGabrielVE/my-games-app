@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { GamesService } from '../games.service';
+import { Game } from '../game';
 
 @Component({
   selector: 'app-games-filter',
@@ -39,4 +40,5 @@ export class GamesFilterComponent implements OnInit{
       platform: this.platform
     });
   }
+
 }
