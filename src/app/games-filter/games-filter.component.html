@@ -1,23 +1,27 @@
 <form (ngSubmit)="onSubmit()">
-  <div class="form-row">
-    <div class="form-group col-md-4">
+  <div class="row mb-4">
+    <div class="form-group col-md-3">
       <label for="inputNombre">Nombre</label>
       <input type="text" class="form-control" id="inputNombre" [(ngModel)]="name" name="name">
     </div>
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
       <label for="inputGenero">Género</label>
       <select id="inputGenero" class="form-control" [(ngModel)]="genre" name="genre">
         <option value="">Todos</option>
         <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
       </select>
     </div>
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
       <label for="inputPlataforma">Plataforma</label>
       <select id="inputPlataforma" class="form-control" [(ngModel)]="platform" name="platform">
         <option value="">Todas</option>
         <option *ngFor="let platform of platforms" [value]="platform">{{ platform }}</option>
       </select>
     </div>
+
+    <div class="col-md-3 mt-4">
+      <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
   </div>
-  <button type="submit" class="btn btn-primary">Buscar</button>
+
 </form>
