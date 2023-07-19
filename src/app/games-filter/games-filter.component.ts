@@ -23,11 +23,15 @@ export class GamesFilterComponent implements OnInit{
   ngOnInit(): void {
     this.gamesService.getGenres().subscribe(
       (data: any) => {
+        data = data.map((d: { genre: any; }) => d.genre);
+        data = Array.from(new Set(data));
         this.genres = data;
       }
     );
     this.gamesService.getPlatForms().subscribe(
       (data: any) => {
+        data = data.map((d: { platform: any; }) => d.platform);
+        data = Array.from(new Set(data));
         this.platforms = data;
       }
     );

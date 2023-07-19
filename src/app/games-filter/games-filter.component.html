@@ -8,14 +8,14 @@
       <label for="inputGenero">Género</label>
       <select id="inputGenero" class="form-control" [(ngModel)]="genre" name="genre">
         <option value="">Todos</option>
-        <option *ngFor="let genre of genres" [value]="genre.name">{{ genre.name }}</option>
+        <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
       </select>
     </div>
     <div class="form-group col-md-4">
       <label for="inputPlataforma">Plataforma</label>
       <select id="inputPlataforma" class="form-control" [(ngModel)]="platform" name="platform">
         <option value="">Todas</option>
-        <option *ngFor="let platform of platforms" [value]="platform.name">{{ platform.name }}</option>
+        <option *ngFor="let platform of platforms" [value]="platform">{{ platform }}</option>
       </select>
     </div>
   </div>
