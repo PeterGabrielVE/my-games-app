@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GamesListComponent } from './games-list/games-list.component';
+import { GameDetailComponent } from './game-detail/game-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GamesListComponent
+    GamesListComponent,
+    GameDetailComponent
   ],
   imports: [
     BrowserModule,
