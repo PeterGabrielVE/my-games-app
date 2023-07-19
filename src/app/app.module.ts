@@ -7,13 +7,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GamesListComponent } from './games-list/games-list.component';
 import { GamesFilterComponent } from './games-filter/games-filter.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
+import { GameCardComponent } from './game-card/game-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GamesListComponent,
     GamesFilterComponent,
-    GameDetailComponent
+    GameDetailComponent,
+    GameCardComponent
   ],
   imports: [
     BrowserModule,
