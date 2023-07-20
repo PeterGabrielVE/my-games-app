@@ -1,4 +1,5 @@
-<div class="container">
+
+<div class="container" *ngIf="router.url == '/'">
   <h1>Listado de Juegos</h1>
   <app-games-filter (buscar)="onSearch()"></app-games-filter>
   <div class="row">

@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { GamesService } from '../games.service';
 import { Game } from '../game';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-games-list',
@@ -21,12 +22,12 @@ export class GamesListComponent implements OnInit {
   genero = '';
   plataforma = '';
 
-
-  constructor(private gamesService: GamesService) {
+  constructor(private gamesService: GamesService, public router:Router) {
     this.games = [];
    }
 
   ngOnInit(): void {
+
     this.gamesService.getGames().subscribe(
       (data: Game[]) => {
         this.games = data;
@@ -37,6 +38,7 @@ export class GamesListComponent implements OnInit {
 
 
   onSubmit(): void {
+
     this.onSearch()
   }
 
