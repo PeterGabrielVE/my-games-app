@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 export class GamesService {
 
   private BASE_URL = environment.apiBaseUrl;
+  name = '';
 
   constructor(private http: HttpClient) { }
 
@@ -31,10 +32,11 @@ export class GamesService {
   }
 
   SearchGame(name: string, genre: string, platform: string): Observable<any> {
+    alert(name)
     let url = `${this.BASE_URL}/games?`;
-    if (name) url += `&search=${name}`;
-    if (genre) url += `&category=${genre}`;
-    if (platform) url += `&platform=${platform}`;
+    if (name) url += `&name=${name}`;
+    //if (genre) url += `&category=${genre}`;
+    //if (platform) url += `&platform=${platform}`;
     return this.http.get(url);
   }
 

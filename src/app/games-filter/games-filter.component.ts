@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter,Input } from '@angular/core';
 import { GamesService } from '../games.service';
 import { Game } from '../game';
 
@@ -12,7 +12,8 @@ export class GamesFilterComponent implements OnInit{
   genres: any;
   platforms: any;
 
-  name = '';
+  name!: string;
+
   genre = '';
   platform = '';
 
@@ -21,6 +22,7 @@ export class GamesFilterComponent implements OnInit{
   constructor(private gamesService: GamesService) { }
 
   ngOnInit(): void {
+    this.name = this.gamesService.name;
     this.gamesService.getGenres().subscribe(
       (data: any) => {
         data = data.map((d: { genre: any; }) => d.genre);
@@ -43,6 +45,10 @@ export class GamesFilterComponent implements OnInit{
       genre:this.genre,
       platform: this.platform
     });
+  }
+
+  modelChangeFn(value: string) {
+    this.gamesService.name = value;
   }
 
 }
