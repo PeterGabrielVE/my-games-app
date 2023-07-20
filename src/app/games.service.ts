@@ -1,18 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
+
+import { startWith, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GamesService {
+export class GamesService  implements OnInit{
 
   private BASE_URL = environment.apiBaseUrl;
   name = '';
+  genre = '';
+  platform = '';
+
+  games$!: Observable<any[]>;
 
   constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.games$ = this.http.get<any[]>(`${this.BASE_URL}/games`);
+  }
 
   getGames(): Observable<any> {
     return this.http.get(`${this.BASE_URL}/games`);
@@ -29,15 +38,6 @@ export class GamesService {
 
   getPlatForms(): Observable<any> {
     return this.http.get(`${this.BASE_URL}/games`);
-  }
-
-  SearchGame(name: string, genre: string, platform: string): Observable<any> {
-    alert(name)
-    let url = `${this.BASE_URL}/games?`;
-    if (name) url += `&name=${name}`;
-    //if (genre) url += `&category=${genre}`;
-    //if (platform) url += `&platform=${platform}`;
-    return this.http.get(url);
   }
 
 }

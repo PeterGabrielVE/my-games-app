@@ -51,4 +51,12 @@ export class GamesFilterComponent implements OnInit{
     this.gamesService.name = value;
   }
 
+  modelChangeGenre(value: string) {
+    this.gamesService.genre = value;
+  }
+
+  modelChangePlatform(value: string) {
+    this.gamesService.platform = value;
+  }
+
 }

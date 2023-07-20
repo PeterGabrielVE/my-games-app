@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { GamesService } from '../games.service';
 import { Game } from '../game';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-games-list',
@@ -21,8 +22,6 @@ export class GamesListComponent implements OnInit {
   plataforma = '';
 
 
-  @Output() buscar = new EventEmitter<any>();
-
   constructor(private gamesService: GamesService) {
     this.games = [];
    }
@@ -42,23 +41,24 @@ export class GamesListComponent implements OnInit {
   }
 
   onSearch() {
-    //alert(this.gamesService.name)
-     /*this.filteredGames = this.games.filter(game => game
-       /*(game.title.toLowerCase().indexOf(this.name.toLowerCase()) !== -1 || !this.name) &&
-       (game.genre === this.genreFilter || !this.genreFilter || this.genreFilter === 'all') &&
-       (game.platform === this.platformFilter || !this.platformFilter || this.platformFilter === 'all')
-     );*/
+      let games2 = this.gamesService.getGames().pipe(
+          map((games: any[]) => {
+            return games.filter((game: { title: string; genre: string; platform: string; }) => {
+              const nameFilter = this.gamesService.name ? game.title.toLowerCase().includes(this.gamesService.name.toLowerCase()) : true;
+              const genreFilter = this.gamesService.genre ? game.genre.toLowerCase() === this.gamesService.genre.toLowerCase() : true;
+              const platformFilter = this.gamesService.platform ? game.platform.toLowerCase() === this.gamesService.platform.toLowerCase() : true;
+              return nameFilter && genreFilter && platformFilter;
+            })
+          })
+        )
+        return games2.subscribe(
+          (data: Game[]) =>
+          {
+            this.games = data;
+          }
+        );
 
-    /* this.filteredGames = this.games.filter(game =>
-      (game.title.toLowerCase().indexOf(this.gamesService.name.toLowerCase()) !== -1 || !this.gamesService.name));
-      */
-      this.gamesService.SearchGame(this.gamesService.name,'','').subscribe(
-        (filteredGames) => {
-          console.log(filteredGames)
-          return this.games = filteredGames;
-        }
-      );
-      //return this.games = this.filteredGames;
+
    }
 
 
