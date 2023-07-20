@@ -2,13 +2,20 @@
   <h1>{{ game.title }}</h1>
   <div class="row">
     <div class="col-md-4">
-      <img [src]="game.thumbnail" alt="{{ game.title }}" class="img-fluid">
+      <img [src]="game.thumbnail" alt="{{ game.title }}" class="img-fluid" [attr.width]="'500px'" [attr.height]="'700px'">
     </div>
     <div class="col-md-8">
       <p>{{ game.short_description }}</p>
       <p><strong>Género:</strong> {{ game.genre }}</p>
       <p><strong>Plataforma:</strong> {{ game.platform }}</p>
-      <p><strong></strong></p>
+      <p><strong>Publicado:</strong> {{ game.publisher }}</p>
+      <p><strong>Desarrollado:</strong> {{ game.developer }}</p>
+      <p><strong>Fecha de lanzamiento:</strong> {{ game.release_date }}</p>
+      <p><strong>URL:</strong> {{ game.freetogame_profile_url }}</p>
+
+      <div>
+        <a [routerLink]="['']" class="btn btn-danger">Regresar Pagina Principal</a>
+      </div>
     </div>
   </div>
 </div>

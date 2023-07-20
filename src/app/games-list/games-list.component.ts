@@ -22,7 +22,7 @@ export class GamesListComponent implements OnInit {
   genero = '';
   plataforma = '';
 
-  constructor(private gamesService: GamesService, public router:Router) {
+  constructor(private gamesService: GamesService, public router2:Router) {
     this.games = [];
    }
 
