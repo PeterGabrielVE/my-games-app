@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <app-games-list></app-games-list>
+    <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.css']
 })
