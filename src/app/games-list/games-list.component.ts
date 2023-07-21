@@ -22,20 +22,29 @@ export class GamesListComponent implements OnInit {
   genero = '';
   plataforma = '';
 
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 7;
+  tableSizes: any = [3, 6, 9, 12];
+
   constructor(private gamesService: GamesService, public router2:Router) {
     this.games = [];
    }
 
   ngOnInit(): void {
+    this.fetchGames();
+  }
 
+  fetchGames(): void {
     this.gamesService.getGames().subscribe(
       (data: Game[]) => {
         this.games = data;
+      },
+      (error) => {
+        console.log(error);
       }
     );
-
   }
-
 
   onSubmit(): void {
 
@@ -43,7 +52,7 @@ export class GamesListComponent implements OnInit {
   }
 
   onSearch() {
-      let games2 = this.gamesService.getGames().pipe(
+      let games = this.gamesService.getGames().pipe(
           map((games: any[]) => {
             return games.filter((game: { title: string; genre: string; platform: string; }) => {
               const nameFilter = this.gamesService.name ? game.title.toLowerCase().includes(this.gamesService.name.toLowerCase()) : true;
@@ -53,7 +62,7 @@ export class GamesListComponent implements OnInit {
             })
           })
         )
-        return games2.subscribe(
+        return games.subscribe(
           (data: Game[]) =>
           {
             this.games = data;
@@ -62,6 +71,17 @@ export class GamesListComponent implements OnInit {
 
 
    }
+
+   onTableDataChange(event: any) {
+    this.page = event;
+    this.fetchGames();
+  }
+
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchGames();
+  }
 
 
 }

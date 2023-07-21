@@ -3,9 +3,23 @@
   <h1>Listado de Juegos</h1>
   <app-games-filter (buscar)="onSearch()"></app-games-filter>
   <div class="row">
-    <div class="col-md-3" *ngFor="let game of games">
+    <div class="col-md-3" *ngFor="let game of games | paginate
+    : {
+        itemsPerPage: tableSize,
+        currentPage: page,
+        totalItems: count
+      };
+    let i = index">
       <app-game-card [game]="game">
       </app-game-card>
     </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+    >
+    </pagination-controls>
   </div>
 </div>
